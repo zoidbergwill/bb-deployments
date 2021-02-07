@@ -64,6 +64,18 @@ services:
     volumes:
     - ./config:/config
 
+  frontend:
+    image: buildbarn/bb-event-service:20201219T141331Z-3d6325d
+    command:
+    - /config/event-service.jsonnet
+    expose:
+    - 9980
+    ports:
+    - 7989:7989
+    - 8989:8989
+    volumes:
+    - ./config:/config
+
   worker-ubuntu16-04:
     image: buildbarn/bb-worker:20201218T103144Z-6f7de1f
     command:
